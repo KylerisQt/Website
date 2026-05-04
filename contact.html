@@ -13,10 +13,10 @@
         }
 
         header {
-            background: #0a2540;
+            background: linear-gradient(135deg, #0a2540, #007BFF);
             color: white;
             text-align: center;
-            padding: 20px;
+            padding: 60px 20px;
         }
 
         nav {
@@ -33,23 +33,23 @@
         }
 
         .container {
-            max-width: 900px;
-            margin: 20px auto;
+            max-width: 1000px;
+            margin: 30px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+
+        .card {
             background: white;
             padding: 25px;
-            border-radius: 8px;
-        }
-
-        h2 {
-            text-align: center;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
         input, textarea {
+            width: 100%;
             padding: 12px;
             margin: 10px 0;
             border: 1px solid #ccc;
@@ -62,7 +62,7 @@
         }
 
         button {
-            background: #007BFF;
+            background: linear-gradient(135deg, #007BFF, #00c6ff);
             color: white;
             border: none;
             padding: 14px;
@@ -71,23 +71,33 @@
             cursor: pointer;
         }
 
-        button:hover {
-            background: #0056b3;
-        }
-
         .success {
             display: none;
             background: #d4edda;
             color: #155724;
-            padding: 15px;
+            padding: 12px;
             border-radius: 6px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             text-align: center;
         }
 
-        .info {
+        .cta-box {
+            background: linear-gradient(135deg, #007BFF, #00c6ff);
+            color: white;
             text-align: center;
-            margin-top: 20px;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        .cta-box a {
+            display: inline-block;
+            margin-top: 10px;
+            background: white;
+            color: #007BFF;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
         }
 
         footer {
@@ -97,52 +107,72 @@
             padding: 15px;
             margin-top: 20px;
         }
-
-        /* Honeypot (spam protection) */
-        .hidden {
-            display: none;
-        }
     </style>
 </head>
 <body>
 
 <header>
     <h1>Florence Tech Doc</h1>
-    <p>Contact Us</p>
+    <p>Fast responses. Honest service. Let’s fix your tech.</p>
 </header>
 
 <nav>
     <a href="index.html">Home</a>
     <a href="services.html">Services</a>
     <a href="about.html">About</a>
+    <a href="terms.html">Terms Of Service</a>
 </nav>
 
 <div class="container">
 
-    <h2>Get in Touch</h2>
+    <!-- CONTACT FORM -->
+    <div class="card">
+        <h2>Get a Free Quote</h2>
 
-    <div class="success" id="successMessage">
-        ✅ Your message has been sent! We’ll get back to you soon.
+        <div class="success" id="successMessage">
+            ✅ Message sent! I’ll get back to you shortly.
+        </div>
+
+        <form id="contactForm" action="https://formspree.io/f/xaqvnprn" method="POST">
+
+            <!-- spam protection -->
+            <input type="text" name="_gotcha" style="display:none">
+
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="tel" name="phone" placeholder="Your Phone Number">
+            <textarea name="message" placeholder="What’s going on with your device?" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
     </div>
 
-    <form id="contactForm" action="https://formspree.io/f/xaqvnprn" method="POST">
+    <!-- CONTACT INFO -->
+    <div class="card">
+        <h2>Contact Information</h2>
 
-        <!-- Spam protection -->
-        <input type="text" name="_gotcha" class="hidden">
+        <p><strong>📧 Email:</strong> FlorenceTechDoc@gmail.com</p>
+        <p><strong>📍 Location:</strong> Florence, South Carolina</p>
 
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <input type="tel" name="phone" placeholder="Your Phone Number">
-        <textarea name="message" placeholder="Describe your issue..." required></textarea>
+        <hr>
 
-        <button type="submit">Send Message</button>
-    </form>
-
-    <div class="info">
-        <p><strong>Email:</strong> florencetechdoc@gmail.com</p>
-        <p><strong>Address:</strong> Florence, South Carolina</p>
+        <h3>Why Contact Us?</h3>
+        <ul>
+            <li>✔ Fast response times</li>
+            <li>✔ Honest pricing</li>
+            <li>✔ Friendly, local service</li>
+        </ul>
     </div>
 
+</div>
+
+<!-- STRONG CTA -->
+<div class="container">
+    <div class="cta-box">
+        <h2>Need Immediate Help?</h2>
+        <p>Call now and get your device diagnosed quickly.</p>
+        <a href="tel:1234567890">Call Now</a>
+    </div>
 </div>
 
 <footer>
@@ -170,7 +200,7 @@
             successMessage.style.display = 'block';
             form.reset();
         } else {
-            alert("Oops! Something went wrong.");
+            alert("Something went wrong. Please try again.");
         }
     });
 </script>
